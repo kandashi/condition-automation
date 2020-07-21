@@ -3,8 +3,9 @@
   "title": "Condtion Automation",
   "description": "A simple module to automaticly update token data based on status condtions",
   "author": "Kandashi",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "minimumCoreVersion": "0.6.5",
+  "compatibleCoreVersion": "0.6.5",
   "system": "dnd5e",
   "scripts": [
 	"scripts/conditionsv3.js"
