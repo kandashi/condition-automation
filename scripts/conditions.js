@@ -27,7 +27,6 @@ function hasEffect(effects, effect) {
   return effects.find(e => e[0] === effect) ? true : false;
 }
 
-
 /**
  * Calculates new speed based o
  *
@@ -38,7 +37,7 @@ function hasEffect(effects, effect) {
 function getNewSpeed(effects, currentSpeed) {
   let newSpeed = currentSpeed;
 
-  let speedEffects = ['petrified', 'incapacitated', 'restrained', 'grappled', 'stunned', 'unconscious'];
+  let speedEffects = ['petrified', 'incapacitated', 'restrained', 'grappled', 'stunned', 'unconscious', 'net', 'sleep', 'daze'];
   if (hasEffect(effects, speedEffects)) {
     return 0;
   }
@@ -69,6 +68,7 @@ function getNewSpeed(effects, currentSpeed) {
 
 Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
   let effects = getProperty(updateData, 'effects');
+  console.log(effects)
   if (!effects) return;
 
   const actor = game.actors.get(token.actorId);
@@ -88,7 +88,7 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
   let newSpeed = getNewSpeed(effects, originalSpeed);
 
   if (newSpeed !== currentSpeed) {
-    await actor.update({'data.attributes.speed.value': `${newSpeed} ft`});
+    await actor.update({ 'data.attributes.speed.value': `${newSpeed} ft` });
   }
 
   if (hasOriginalSpeedFlag && originalSpeed === newSpeed) {
@@ -96,4 +96,35 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
   } else {
     await actor.setFlag(scope, 'originalSpeed', originalSpeed);
   }
+
+  //additions over standard
+  let hasStunned = hasEffect(effects, 'stunned');
+  if (hasStunned) {
+    let params =
+      [{
+        filterType: "bevel",
+        autoDestroy: true,
+        rotation: 0,
+        thickness: 6,
+        lightColor: 0x00FF00,
+        lightAlpha: 0.7,
+        shadowColor: 0xFF0000,
+        shadowAlpha: 0.4,
+        animated:
+        {
+          rotation:
+          {
+            active: true,
+            clockWise: true,
+            loopDuration: 1000,
+            animType: "chaoticOscillation",
+            loops: 2,
+            animType: "rotation"
+          }
+        }
+      }];
+
+    TokenMagic.addFiltersOnTargeted(params);
+  }
+  
 });
