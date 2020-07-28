@@ -21,7 +21,7 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
                 blur:
                 {
                     active: true,
-                    loopDuration: 500,
+                    loopDuration: 5000,
                     loops: Infinity,
                     animType: "syncCosOscillation",
                     val1: 2,
@@ -30,7 +30,7 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
                 rotation:
                 {
                     active: true,
-                    loopDuration: 100,
+                    loopDuration: 3000,
                     loops: Infinity,
                     animType: "syncSinOscillation",
                     val1: 33,
