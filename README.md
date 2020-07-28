@@ -17,4 +17,4 @@ https://foundryvtt.com/packages/tokenmagic/
 
 Many thanks to Forien (https://github.com/Forien) for guiding me through this module, his patreon is here: https://www.patreon.com/forien/posts
 
-V1.0.7 Shadow effects updated with "blulge" effect to help show token height, alonside the shadow. Working to query "flying" state before adding shadow effects.
+V1.0.7 Shadow effects updated with "blulge" effect to help show token height, alonside the shadow. Working to query "flying" state before adding shadow effects. Many thanks to 
