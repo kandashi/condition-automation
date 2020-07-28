@@ -46,6 +46,6 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
  await TokenMagic.deleteFiltersOnSelected("autoShadows");
     if (filter) {
         console.log('final test');
-        await TokenMagic.addFilters(tokenInstance, params);
+        await TokenMagic.addUpdateFilters(tokenInstance, params);
     } 
 });
