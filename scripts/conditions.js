@@ -1,4 +1,4 @@
-console.log("ConditionsV1.0.4 active");
+console.log("ConditionsV1.0.7 active");
 const scope = 'condition-automation';
 
 function getEffect(path) {
@@ -68,14 +68,17 @@ function getNewSpeed(effects, currentSpeed) {
 
 Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
   let effects = getProperty(updateData, 'effects');
-  console.log(effects)
   if (!effects) return;
 
   const actor = game.actors.get(token.actorId);
   effects = getEffects(effects);
 
   const blinded = hasEffect(effects, ['blind', 'blinded']);
-  updateData.vision = !blinded;
+  if(blinded) {
+    updateData.sightAngle = 1
+  } else if(!blinded){
+    updateData.sightAngle = 0
+  }
 
   let originalSpeed = actor.getFlag(scope, 'originalSpeed');
   const hasOriginalSpeedFlag = !!originalSpeed;
@@ -100,6 +103,7 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
   //additions over standard
   let hasStunned = hasEffect(effects, 'stunned');
   if (hasStunned) {
+    console.log(stunned);
     let params =
       [{
         filterType: "bevel",
