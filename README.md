@@ -6,6 +6,11 @@ These effects work well alongside About-Time and Dynamic Effects for auto-applic
 
 https://foundryvtt.com/packages/combat-utility-belt/
 
+
+Module config settings can toggle use the use of the "Blinded" setting, which will restrist the tokens vision to 1 degree (closes to fully blinded possible in the Foundry System)/
+Shadow settings will toggle the use of the elevation based shadow effects. 
+
+
 Upon aplication of the CUB conditions for: Blinded, Stunned, Petrified, Grappled, Restrained, Unconsious, Incapacitiated, Exhaustion 1-5; the revlavent adjustments will be made to the actor/token data. Vision will be dissabled on Blinded tokens, and speed reduced on the others. 
 These changes are non-permenant and will revert upon removal of the status effect.
 
