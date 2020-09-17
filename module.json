@@ -16,7 +16,7 @@
 	}],
 	"scripts": [
 		"scripts/complete.js"
-	],
+	], 
 	"url": "https://github.com/kandashi/condition-automation",
 	"manifest": "https://raw.githubusercontent.com/kandashi/condition-automation/master/module.json",
 	"download": "https://github.com/kandashi/condition-automation/archive/master.zip"
