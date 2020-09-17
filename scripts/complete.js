@@ -6,6 +6,7 @@ const config = [{
         type: Boolean,
         default: false,
         config: true,
+        hint: "Toggles the 'blinded' effect on token vision, setting their vision ark to 1 degree when blinded.",
         onChange: (newValue) => {
             console.log(`Blinded Setting changed to ${newValue}.`)
         },
@@ -19,6 +20,7 @@ const config = [{
         type: Boolean,
         default: false,
         config: true,
+        hint: "Toggles the elevation-shadow animation effects.",
         onChange: (newValue) => {
             console.log(`Shadow Setting changed to ${newValue}.`)
         },
@@ -35,7 +37,7 @@ console.log("ConditionsV1.0.7 active");
 const scope = 'condition-automation';
 
 function getEffect(path) {
-    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?\.svg", 'i');
+    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?\.svg|png", 'i');
     let match = path.match(effectRegExp);
     if (!match) return undefined;
 
