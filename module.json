@@ -14,12 +14,6 @@
 		"module": "condition-automation",
 		"entity": "Macro"
 	}],
-	"dependencies": [
-	  {
-		"name": "Combat Utility Belt",
-		"manifest": "https://raw.githubusercontent.com/death-save/combat-utility-belt/master/module.json",
-	}
-					],
 	"scripts": [
 		"scripts/complete.js"
 	],
