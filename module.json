@@ -1,31 +1,29 @@
 {
-  "name": "condition-automation",
-  "title": "Condition Automation",
-  "description": "A simple module to automaticly update token data based on status condtions",
-  "author": "Kandashi",
-  "version": "1.1.0",
-  "minimumCoreVersion": "0.6.5",
-  "compatibleCoreVersion": "0.6.6",
-  "system": "dnd5e",
-  "packs": [
-	{
+	"name": "condition-automation",
+	"title": "Condition Automation",
+	"description": "A simple module to automaticly update token data based on status condtions",
+	"author": "Kandashi",
+	"version": "1.1.0",
+	"minimumCoreVersion": "0.6.5",
+	"compatibleCoreVersion": "0.6.6",
+	"system": "dnd5e",
+	"packs": [{
 		"name": "macros",
 		"label": "Condtion Macros",
 		"path": "packs/macros.db",
 		"module": "condition-automation",
 		"entity": "Macro"
+	}],
+	"dependencies": [
+	  {
+		"name": "Combat Utility Belt",
+		"manifest": "https://raw.githubusercontent.com/death-save/combat-utility-belt/master/module.json",
 	}
-  ],
-  "dependencies": [
-	{
-	  "name": "Combat Utility Belt",
-	  "manifest": "https://raw.githubusercontent.com/death-save/combat-utility-belt/master/module.json",
-	}
-	  ],
-  "scripts": [
-        "scripts/complete.js"
+					],
+	"scripts": [
+		"scripts/complete.js"
 	],
-  "url": "https://github.com/kandashi/condition-automation",
-  "manifest": "https://raw.githubusercontent.com/kandashi/condition-automation/master/module.json",
-  "download": "https://github.com/kandashi/condition-automation/archive/master.zip"
+	"url": "https://github.com/kandashi/condition-automation",
+	"manifest": "https://raw.githubusercontent.com/kandashi/condition-automation/master/module.json",
+	"download": "https://github.com/kandashi/condition-automation/archive/master.zip"
 }
