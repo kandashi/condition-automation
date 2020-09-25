@@ -16,6 +16,7 @@ These changes are non-permenant and will revert upon removal of the status effec
 
 ![Speed Effects](https://github.com/kandashi/condition-automation/blob/master/Images/Speed%20Tests.gif)
 
+# Shadows
 This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automaticly set a shadow effect "below" the token, this is change in distance based on the elevation value. 
 
 ![Shadow Effects](https://github.com/kandashi/condition-automation/blob/master/Images/ShadowEffects.PNG)
