@@ -6,7 +6,6 @@ const config = [{
         type: Boolean,
         default: false,
         config: true,
-        hint: "Toggles the 'blinded' effect on token vision, setting their vision ark to 1 degree when blinded.",
         onChange: (newValue) => {
             console.log(`Blinded Setting changed to ${newValue}.`)
         },
@@ -20,7 +19,6 @@ const config = [{
         type: Boolean,
         default: false,
         config: true,
-        hint: "Toggles the elevation-shadow animation effects.",
         onChange: (newValue) => {
             console.log(`Shadow Setting changed to ${newValue}.`)
         },
@@ -37,7 +35,7 @@ console.log("ConditionsV1.0.7 active");
 const scope = 'condition-automation';
 
 function getEffect(path) {
-    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?\.svg|png", 'i');
+    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?\.svg", 'i');
     let match = path.match(effectRegExp);
     if (!match) return undefined;
 
@@ -103,7 +101,7 @@ function getNewSpeed(effects, currentSpeed) {
 
 Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
 
-        let effects = getProperty(updateData, 'effects');
+    let effects = getProperty(updateData, 'effects');
     if (!effects) return;
 
     const actor = game.actors.get(token.actorId);
@@ -176,41 +174,34 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
     console.log(elevation)
     let params =
         [{
-            filterType: "twist",
+            filterType: "transform",
             filterId: "autoTwist",
-            autoDestroy: true,
+            twRadiusPercent: 200,
             padding: 10,
-            radiusPercent: 600,
-            angle: 0,
             animated:
             {
-                angle:
+                twRotation:
                 {
-                    active: true,
-                    animType: "syncSinOscillation",
-                    loopDuration: 6000,
-                    val1: -0.03 * Math.PI,
-                    val2: +0.03 * Math.PI
+                    animType: "sinOscillation",
+                    val1: +(elevation / 10),
+                    val2: -(elevation / 10),
+                    loopDuration: 8000,
                 }
             }
         },
         {
-            filterType: "bulgepinch",
+            filterType: "transform",
             filterId: "autoBulge",
-            padding: 10,
-            autoDestroy: true,
-            strength: 0,
-            zIndex: 2,
-            radiusPercent: (elevation * 5),
+            bpRadiusPercent: (elevation * 5),
+            padding: 100,
             animated:
             {
-                strength:
+                bpStrength:
                 {
-                    active: true,
-                    animType: "syncCosOscillation",
-                    loopDuration: 6000,
-                    val1: 0.3,
-                    val2: .35
+                    animType: "cosOscillation",
+                    val1: 0.1,
+                    val2: 0.15,
+                    loopDuration: 5000,
                 }
             }
         },
@@ -218,31 +209,23 @@ Hooks.on("preUpdateToken", async (scene, token, updateData, options) => {
             filterType: "shadow",
             filterId: "autoShadow",
             rotation: 35,
-            autoDestroy: true,
-            blur: 2,
+            blur: (elevation / 10),
             quality: 5,
-            distance: elevation,
+            distance: (elevation + 5),
             alpha: 0.33,
             padding: 10,
             shadowOnly: false,
             color: 0x000000,
+            zOrder: 6000,
             animated:
             {
-                blur:
+                rotation:
                 {
                     active: true,
-                    loopDuration: 6000,
-                    animType: "syncCosOscillation",
-                    val1: 2,
-                    val2: 3
-                },
-                distance:
-                {
-                    active: true,
-                    loopDuration: 6000,
+                    loopDuration: 5000,
                     animType: "syncSinOscillation",
-                    val1: 75,
-                    val2: 80
+                    val1: 33,
+                    val2: 37
                 },
                 alpha:
                 {
