@@ -14,9 +14,10 @@ Shadow settings will toggle the use of the elevation based shadow effects.
 Upon aplication of the CUB conditions for: Blinded, Stunned, Petrified, Grappled, Restrained, Unconsious, Incapacitiated, Exhaustion 1-5; the revlavent adjustments will be made to the actor/token data. Vision will be dissabled on Blinded tokens, and speed reduced on the others. 
 These changes are non-permenant and will revert upon removal of the status effect.
 
-![Speed tests]Shadow(Images/Speed Tests.gif)
+[Speed tests]Shadow(Images/Speed Tests.gif)
 
 This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automaticly set a shadow effect "below" the token, this is change in distance based on the elevation value. 
+
 [Shadow effects](Images/ShadowEffects.PNG)
  
 https://foundryvtt.com/packages/tokenmagic/
