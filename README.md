@@ -14,12 +14,16 @@ Shadow settings will toggle the use of the elevation based shadow effects.
 Upon aplication of the CUB conditions for: Blinded, Stunned, Petrified, Grappled, Restrained, Unconsious, Incapacitiated, Exhaustion 1-5; the revlavent adjustments will be made to the actor/token data. Vision will be dissabled on Blinded tokens, and speed reduced on the others. 
 These changes are non-permenant and will revert upon removal of the status effect.
 
+![Speed Effects](https://github.com/kandashi/condition-automation/blob/master/Images/Speed%20Tests.gif)
+
 This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automaticly set a shadow effect "below" the token, this is change in distance based on the elevation value. 
+
+![Shadow Effects](https://github.com/kandashi/condition-automation/blob/master/Images/ShadowEffects.PNG)
  
 https://foundryvtt.com/packages/tokenmagic/
 
 Many thanks to Forien for guiding me through this module, his patreon is here: https://www.patreon.com/forien
 
-V1.0.7 Shadow effects updated with "blulge" effect to help show token height, alonside the shadow. Working to query "flying" state before adding shadow effects.
+**V1.0.7** Shadow effects updated with "blulge" effect to help show token height, alonside the shadow. Working to query "flying" state before adding shadow effects.
 
-V1.0.8 Updated Shadow Effects to fall inline with Token Magic FX new system. Updated bulge effects to scale with elevation, alongside the shadow blur increasing with elevation too.
+**V1.0.8** Updated Shadow Effects to fall inline with Token Magic FX new system. Updated bulge effects to scale with elevation, alongside the shadow blur increasing with elevation too.
