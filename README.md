@@ -27,3 +27,19 @@ Many thanks to Forien for guiding me through this module, his patreon is here: h
 **V1.0.7** Shadow effects updated with "blulge" effect to help show token height, alonside the shadow. Working to query "flying" state before adding shadow effects.
 
 **V1.1.2** Updated Shadow Effects to fall inline with Token Magic FX new system. Updated bulge effects to scale with elevation, alongside the shadow blur increasing with elevation too.
+
+**V1.1.3**
+Updated the conditions to include Paralyzed as an option, thanks to https://github.com/Takryn for bringing this up.
+
+Also included image type independance, now any svg, png, webp or jpg willl register as a valid effect trigger; thanks to https://github.com/dstein766. However this does require the name of the effect to tie into the effect name; you must have the name as the linked status effect for it to register. E.g. eye.png will not registed the blinded condition, but blinded.webp will. The effects are as follows:
+
+* petrified
+* incapacitated
+* restrained
+* grappeled
+* stunned
+* unconscious
+* blinded
+* exhaustion 1-5
+* prone
+For some reason, the default conditions in DnD5e are not recognised.
