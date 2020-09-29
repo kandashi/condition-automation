@@ -31,7 +31,7 @@ Hooks.once('init', () => {
     });
 });
 
-console.log("ConditionsV1.0.7 active");
+console.log("ConditionsV1.1.3 active");
 const scope = 'condition-automation';
 
 function getEffect(path) {
