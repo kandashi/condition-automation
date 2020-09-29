@@ -35,7 +35,7 @@ console.log("ConditionsV1.0.7 active");
 const scope = 'condition-automation';
 
 function getEffect(path) {
-    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?\.svg", 'i');
+    const effectRegExp = new RegExp("([a-z-_]+)([0-9]+)?.(svg|png|webp|jpg)", 'i');
     let match = path.match(effectRegExp);
     if (!match) return undefined;
 
