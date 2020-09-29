@@ -70,7 +70,7 @@ function hasEffect(effects, effect) {
 function getNewSpeed(effects, currentSpeed) {
     let newSpeed = currentSpeed;
 
-    let speedEffects = ['petrified', 'incapacitated', 'restrained', 'grappled', 'stunned', 'unconscious', 'net', 'sleep', 'daze'];
+    let speedEffects = ['petrified', 'incapacitated', 'restrained', 'grappled', 'stunned', 'unconscious', 'net', 'sleep', 'daze', 'paralyzed'];
     if (hasEffect(effects, speedEffects)) {
         return 0;
     }
