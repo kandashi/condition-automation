@@ -1,4 +1,4 @@
-const config = [{
+const conditionAutomationConfig = [{
     name: 'Blinded',
     data: {
         name: 'Blinding Setting',
@@ -26,7 +26,7 @@ const config = [{
 }];
 
 Hooks.once('init', () => {
-    config.forEach((cfg) => {
+    conditionAutomationConfig.forEach((cfg) => {
         game.settings.register('condition-automation', cfg.name, cfg.data);
     });
 });
