@@ -1,19 +1,14 @@
 # Automated Conditions Foundry VTT
-This module requires Combat Utility Belt for basic fuctionality 
-It will automaticly set speed and vision on the actor token based on the CUB effects present on the actor. Alongside this is automatic shadow generation based on token elevation distance. 
+It will automaticly adjust vision on the actor token based on the status effects present on the actor. Alongside this is automatic shadow generation based on token elevation distance. 
 These effects work well alongside About-Time and Dynamic Effects for auto-application. 
 
 https://foundryvtt.com/packages/combat-utility-belt/
 
 
-Module config settings can toggle use the use of the "Blinded" setting, which will restrist the tokens vision to 1 degree (closest to fully blinded possible in the Foundry System)/
+Module config settings can toggle use the use of the "Blinded" setting, which will restrict the tokens vision to 1 degree (closest to fully blinded possible in the Foundry System)
 Shadow settings will toggle the use of the elevation based shadow effects. 
 
-## Condition Effects
-Upon aplication of the CUB conditions for: Blinded, Stunned, Petrified, Grappled, Restrained, Unconsious, Incapacitiated, Exhaustion 1-5; the revlavent adjustments will be made to the actor/token data. Vision will be dissabled on Blinded tokens, and speed reduced on the others. 
-These changes are non-permenant and will revert upon removal of the status effect.
 
-![Speed Effects](https://github.com/kandashi/condition-automation/blob/master/Images/Speed%20Tests.gif)
 
 ## Shadows
 This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automaticly set a shadow effect "below" the token, this is change in distance based on the elevation value. 
@@ -43,3 +38,8 @@ Also included image type independance, now any svg, png, webp or jpg willl regis
 * exhaustion 1-5
 * prone
 For some reason, the default conditions in DnD5e are not recognised.
+
+**V2.0.0**
+-Ripped out support for speed changes as this is now supported in the CUB default condition system
+Reworked the blinded setting to properly recognise all Effects not only CUB ones. Now can designate a specific -Effect to trigger the Blind condition
+- Changed config settings to stop collision with the Jitsi Module
