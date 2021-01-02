@@ -43,3 +43,6 @@ For some reason, the default conditions in DnD5e are not recognised.
 -Ripped out support for speed changes as this is now supported in the CUB default condition system
 Reworked the blinded setting to properly recognise all Effects not only CUB ones. Now can designate a specific -Effect to trigger the Blind condition
 - Changed config settings to stop collision with the Jitsi Module
+
+**V2.1.0**
+- Added options for Remove Vision from blinded tokens (take care to instruct your players how to reselect their tokens), and also added option to reduce Sight Limit to 0 for those using Perfect Vision
