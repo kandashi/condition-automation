@@ -6,10 +6,10 @@ const conditionAutomationConfig = [{
         type: Number,
         default: 0,
         config: true,
-        hint: "Enables the 'blinded' effect on token vision",
+        hint: "Toggles the 'blinded' effect on token vision, setting their vision ark to 1 degree when blinded.",
         choices: {
             0: "Disabled",
-            1: "1 Degree Sight Angle",
+            1: "1 Degree sight angle",
             2: "Removes Vision",
             3: "Perfect Vision limit sight"
         }
@@ -19,10 +19,10 @@ const conditionAutomationConfig = [{
     name: 'BlindStatus',
     data: {
         name: "Blind Status Name",
-        hint: "Name of the effect to search for, default Blinded. For core 5e users, use Blind",
+        hint: "Name of the effect to search for, default Blinded. For CUB change to Blinded",
         scope: "world",
         config: true,
-        default: "Blinded",
+        default: "Blind",
         type: String,
     }
 },
@@ -34,9 +34,11 @@ const conditionAutomationConfig = [{
         type: Boolean,
         default: false,
         config: true,
-        hint: "Enables elevation-shadow animation effects.",
+        hint: "Toggles the elevation-shadow animation effects.",
         onChange: (newValue) => {
-            console.log(`Shadow Setting changed to ${newValue}.`)
+            if(!game.modules.get("tokenmagic")?.active && game.settings.get('condition-automation', 'shadows')) {
+                ui.notifications.error("Condition Automation shadow effects cannot work without Token Magic FX enabled")
+            }
         },
     }
 }];
