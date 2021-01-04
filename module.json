@@ -6,7 +6,10 @@
 	"version": "2.1.0",
 	"minimumCoreVersion": "0.7.5",
 	"compatibleCoreVersion": "0.7.9",
-	"system": "dnd5e",
+	"system": [
+		"dnd5e",
+		"pf2e"
+	],
 	"scripts": [
 		"scripts/complete.js"
 	], 
