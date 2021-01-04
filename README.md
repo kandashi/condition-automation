@@ -46,3 +46,7 @@ Reworked the blinded setting to properly recognise all Effects not only CUB ones
 
 **V2.1.0**
 - Added options for Remove Vision from blinded tokens (take care to instruct your players how to reselect their tokens), and also added option to reduce Sight Limit to 0 for those using Perfect Vision
+
+**V2.2.0**
+- Added support for PF2e 
+- Cleaned up old code to enhance performance
