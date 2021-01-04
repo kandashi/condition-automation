@@ -60,6 +60,7 @@ Hooks.on("ready", () => {
             let blinded = effects.label === blindStatus;
             let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
             let actorToken = game.actors.get(actor.data._id)
+            if(blinded){
             switch (blindedSetting) {
                 case 1: {
                     actorToken.setFlag('condition-automation', 'sightAngleOld', actorToken.data.token.sightAngle)
@@ -80,6 +81,7 @@ Hooks.on("ready", () => {
                 }
                     break;
             }
+        }
         });
 
         Hooks.on("preDeleteActiveEffect", async (actor, effects, options, someID) => {
@@ -88,6 +90,7 @@ Hooks.on("ready", () => {
             let blinded = effects.label === blindStatus;
             let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
             let actorToken = game.actors.get(actor.data._id)
+            if(blinded){
             switch (blindedSetting) {
                 case 1: {
                     let visionArc = actorToken.getFlag('condition-automation', 'sightAngleOld')
@@ -113,6 +116,7 @@ Hooks.on("ready", () => {
                     break;
                 }
             }
+        }
         })
     }
 
