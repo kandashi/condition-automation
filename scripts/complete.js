@@ -171,7 +171,7 @@ Hooks.on("ready", () => {
                         break;
                     case 3: {
                         let oldVision = tokenInstance.getFlag('condition-automation', 'PVold');
-                        if(typeof oldVision === 'object') oldVision = ""
+                        if(typeof oldVision !== 'number') oldVision = ""
                         tokenInstance.setFlag('perfect-vision', 'sightLimit', oldVision);
                         tokenInstance.unsetFlag('condition-automation', 'PVold');
                     }
