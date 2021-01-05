@@ -29,7 +29,7 @@ const conditionAutomationConfig = [{
 {
     name: 'npcVision',
     data: {
-        name: 'Enable NPC vision settings',
+        name: 'Enable unlinked token vision settings',
         scope: 'world',
         type: Boolean,
         default: false,
