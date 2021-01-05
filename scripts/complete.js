@@ -29,7 +29,7 @@ const conditionAutomationConfig = [{
 {
     name: 'npcVision',
     data: {
-        name: 'Enable unlinked token vision settings',
+        name: 'Enable NPC vision settings',
         scope: 'world',
         type: Boolean,
         default: false,
@@ -171,7 +171,7 @@ Hooks.on("ready", () => {
                         break;
                     case 3: {
                         let oldVision = tokenInstance.getFlag('condition-automation', 'PVold');
-                        if(typeof oldVision !== 'number') oldVision = ""
+                        if(typeof oldVision === 'object') oldVision = ""
                         tokenInstance.setFlag('perfect-vision', 'sightLimit', oldVision);
                         tokenInstance.unsetFlag('condition-automation', 'PVold');
                     }
