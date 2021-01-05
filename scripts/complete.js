@@ -137,7 +137,7 @@ Hooks.on("ready", () => {
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
             if (!update?.actorData?.effects) return;
             let blinded = update.actorData.effects.find(i => i.label === blindStatus);
-            let currentlyBlinded = token.actorData.effects.find(i => i.label === blindStatus)
+            let currentlyBlinded = token.actorData?.effects?.find(i => i.label === blindStatus)
             if (blinded && !currentlyBlinded) {
                 switch (blindedSetting) {
                     case 1: {
