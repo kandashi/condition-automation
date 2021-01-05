@@ -69,7 +69,7 @@ Hooks.on("ready", () => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
             let blinded = effects.label === blindStatus;
-            let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
+            let token = actor.getActiveTokens()[0]
             let actorToken = game.actors.get(actor.data._id)
             if (blinded) {
                 switch (blindedSetting) {
@@ -99,7 +99,7 @@ Hooks.on("ready", () => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
             let blinded = effects.label === blindStatus;
-            let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
+            let token = actor.getActiveTokens()[0]
             let actorToken = game.actors.get(actor.data._id)
             if (blinded) {
                 switch (blindedSetting) {
@@ -171,6 +171,7 @@ Hooks.on("ready", () => {
                         break;
                     case 3: {
                         let oldVision = tokenInstance.getFlag('condition-automation', 'PVold');
+                        if(typeof oldVision === 'object') oldVision = ""
                         tokenInstance.setFlag('perfect-vision', 'sightLimit', oldVision);
                         tokenInstance.unsetFlag('condition-automation', 'PVold');
                     }
