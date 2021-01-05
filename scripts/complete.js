@@ -27,6 +27,17 @@ const conditionAutomationConfig = [{
     }
 },
 {
+    name: 'npcVision',
+    data: {
+        name: 'Enable NPC vision settings',
+        scope: 'world',
+        type: Boolean,
+        default: false,
+        config: true,
+        hint: "Allows NPCs to be affected by the blinded setting",
+    }
+},
+{
     name: 'shadows',
     data: {
         name: 'Shadow Setting',
@@ -35,8 +46,8 @@ const conditionAutomationConfig = [{
         default: false,
         config: true,
         hint: "Toggles the elevation-shadow animation effects.",
-        onChange: (newValue) => {
-            if(!game.modules.get("tokenmagic")?.active && game.settings.get('condition-automation', 'shadows')) {
+        onChange: () => {
+            if (!game.modules.get("tokenmagic")?.active && game.settings.get('condition-automation', 'shadows')) {
                 ui.notifications.error("Condition Automation shadow effects cannot work without Token Magic FX enabled")
             }
         },
@@ -58,71 +69,123 @@ Hooks.on("ready", () => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
             let blinded = effects.label === blindStatus;
-            let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
+            let token = actor.getActiveTokens()[0]
             let actorToken = game.actors.get(actor.data._id)
-            if(blinded){
-            switch (blindedSetting) {
-                case 1: {
-                    actorToken.setFlag('condition-automation', 'sightAngleOld', actorToken.data.token.sightAngle)
-                    token.update({ "sightAngle": 1 });
-                    actorToken.update({ "token.sightAngle": 1 })
+            if (blinded) {
+                switch (blindedSetting) {
+                    case 1: {
+                        actorToken.setFlag('condition-automation', 'sightAngleOld', actorToken.data.token.sightAngle)
+                        token.update({ "sightAngle": 1 });
+                        actorToken.update({ "token.sightAngle": 1 })
+                    }
+                        break;
+                    case 2: {
+                        token.update({ "vision": false });
+                        actorToken.update({ "token.vision": false })
+                    }
+                        break;
+                    case 3: {
+                        let oldVision = token.getFlag('perfect-vision', 'sightLimit');
+                        token.setFlag('condition-automation', 'PVold', oldVision);
+                        token.setFlag('perfect-vision', 'sightLimit', 0);
+                        actorToken.setFlag('perfect-vision', 'sightLimit', 0);
+                    }
+                        break;
                 }
-                    break;
-                case 2: {
-                    token.update({ "vision": false });
-                    actorToken.update({ "token.vision": false })
-                }
-                    break;
-                case 3: {
-                    let oldVision = token.getFlag('perfect-vision', 'sightLimit');
-                    token.setFlag('condition-automation', 'PVold', oldVision);
-                    token.setFlag('perfect-vision', 'sightLimit', 0);
-                    actorToken.setFlag('perfect-vision', 'sightLimit', 0);
-                }
-                    break;
             }
-        }
         });
 
         Hooks.on("preDeleteActiveEffect", async (actor, effects, options, someID) => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
             let blinded = effects.label === blindStatus;
-            let token = canvas.tokens.placeables.find(i => i.actor._data._id.includes(actor.data._id))
+            let token = actor.getActiveTokens()[0]
             let actorToken = game.actors.get(actor.data._id)
-            if(blinded){
-            switch (blindedSetting) {
-                case 1: {
-                    let visionArc = actorToken.getFlag('condition-automation', 'sightAngleOld')
-                    token.update({ "sightAngle": visionArc });
-                    actorToken.update({ "token.sightAngle": visionArc })
-                }
-                    break;
-                case 2: {
-                    token.update({ "vision": true });
-                    actorToken.update({ "token.vision": true })
-                }
-                    break;
-                case 3: {
-                    let oldVision = token.getFlag('condition-automation', 'PVold');
-                    if (oldVision) {
-                        token.setFlag('perfect-vision', 'sightLimit', oldVision);
-                        actorToken.setFlag('perfect-vision', 'sightLimit', oldVision);
+            if (blinded) {
+                switch (blindedSetting) {
+                    case 1: {
+                        let visionArc = actorToken.getFlag('condition-automation', 'sightAngleOld')
+                        token.update({ "sightAngle": visionArc });
+                        actorToken.update({ "token.sightAngle": visionArc })
                     }
-                    else {
-                        token.unsetFlag('perfect-vision', 'sightLimit');
-                        actorToken.unsetFlag('perfect-vision', 'sightLimit');
+                        break;
+                    case 2: {
+                        token.update({ "vision": true });
+                        actorToken.update({ "token.vision": true })
                     }
-                    break;
+                        break;
+                    case 3: {
+                        let oldVision = token.getFlag('condition-automation', 'PVold');
+                        if (oldVision) {
+                            token.setFlag('perfect-vision', 'sightLimit', oldVision);
+                            actorToken.setFlag('perfect-vision', 'sightLimit', oldVision);
+                        }
+                        else {
+                            token.unsetFlag('perfect-vision', 'sightLimit');
+                            actorToken.unsetFlag('perfect-vision', 'sightLimit');
+                        }
+                        break;
+                    }
                 }
             }
-        }
+        })
+
+        Hooks.on("preUpdateToken", (scene, token, update) => {
+            if(game.settings.get('condition-automation', 'npcVision') === false) return;
+            let tokenInstance = canvas.tokens.get(token._id)
+            const blindedSetting = game.settings.get('condition-automation', 'Blinded');
+            const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
+            if (!update?.actorData?.effects) return;
+            let blinded = update.actorData.effects.find(i => i.label === blindStatus);
+            let currentlyBlinded = token.actorData.effects.find(i => i.label === blindStatus)
+            if (blinded && !currentlyBlinded) {
+                switch (blindedSetting) {
+                    case 1: {
+                        tokenInstance.setFlag('condition-automation', 'sightAngleOld', token.sightAngle)
+                        update.sightAngle = 1;
+                    }
+                        break;
+                    case 2: {
+                        update.vision = false;
+                    }
+                        break;
+                    case 3: {
+                        let oldVision = tokenInstance.getFlag('perfect-vision', 'sightLimit');
+                        tokenInstance.setFlag('condition-automation', 'PVold', oldVision);
+                        tokenInstance.setFlag('perfect-vision', 'sightLimit', 0);
+                    }
+                        break;
+                }
+            }
+            else if (!blinded && currentlyBlinded ){
+                switch (blindedSetting) {
+                    case 1: {
+                        let visionArc = tokenInstance.getFlag('condition-automation', 'sightAngleOld')
+                        update.sightAngle = visionArc;
+                        tokenInstance.unsetFlag('condition-automation', 'sightAngleOld')
+                    }
+                        break;
+                    case 2: {
+                        update.vision= true ;
+                    }
+                        break;
+                    case 3: {
+                        let oldVision = tokenInstance.getFlag('condition-automation', 'PVold');
+                        if(typeof oldVision === 'object') oldVision = ""
+                        tokenInstance.setFlag('perfect-vision', 'sightLimit', oldVision);
+                        tokenInstance.unsetFlag('condition-automation', 'PVold');
+                    }
+                        break;
+                }
+            }
         })
     }
 
     if (game.system.id === "pf2e") {
         const itemName = game.settings.get('condition-automation', 'BlindStatus')
         Hooks.on("preUpdateToken", (scene, token, update) => {
+            if(game.settings.get('condition-automation', 'npcVision') === false) return;
+
             if (!update.actorData?.items) return;
             let tokenInstance = canvas.tokens.get(token._id)
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
