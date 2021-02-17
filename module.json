@@ -8,11 +8,24 @@
 	"compatibleCoreVersion": "0.7.9",
 	"system": [
 		"dnd5e",
-		"pf2e"
+		"pf2e",
+		"tormenta20"
 	],
 	"scripts": [
 		"scripts/complete.js"
-	], 
+	],
+  "languages": [
+    {
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json"
+    },
+    {
+        "lang": "pt-BR",
+        "name": "Português (Brasil)",
+        "path": "lang/pt-BR.json"
+    }
+  ],
 	"url": "https://github.com/kandashi/condition-automation",
 	"manifest": "https://raw.githubusercontent.com/kandashi/condition-automation/master/module.json",
 	"download": "https://github.com/kandashi/condition-automation/archive/master.zip"

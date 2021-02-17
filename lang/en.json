@@ -1,0 +1,16 @@
+{
+  "CONDITION-AUTOMATION.BlindingSettingTitle": "Blinding Setting",
+  "CONDITION-AUTOMATION.BlindingSettingHint": "Toggles the \"blinded\" effect on token vision.",
+  "CONDITION-AUTOMATION.BlindingSettingOption0": "Disabled",
+  "CONDITION-AUTOMATION.BlindingSettingOption1": "1 Degree sight angle",
+  "CONDITION-AUTOMATION.BlindingSettingOption2": "Removes Vision",
+  "CONDITION-AUTOMATION.BlindingSettingOption3": "Perfect Vision limit sight",
+  "CONDITION-AUTOMATION.condition-automationError": "Perfect Vision limit sight cannot work without Perfect Vision enabled.",
+  "CONDITION-AUTOMATION.BlindStatusTitle": "Blind Status Name",
+  "CONDITION-AUTOMATION.BlindStatusHint": "Name of the effect to search for. Default: Blind. For CUB: Blinded.",
+  "CONDITION-AUTOMATION.npcVisionTitle": "Enable unlinked token vision settings",
+  "CONDITION-AUTOMATION.npcVisionHint": "Allows NPCs to be affected by the Blinding Setting.",
+  "CONDITION-AUTOMATION.shadowsTitle": "Shadow Setting",
+  "CONDITION-AUTOMATION.shadowsHint": "Enables the elevation-shadow animation effects.",
+  "CONDITION-AUTOMATION.shadowsError": "Condition Automation shadow effects cannot work without Token Magic FX enabled."
+}
