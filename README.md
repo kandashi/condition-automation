@@ -1,13 +1,5 @@
-# Automated Conditions Foundry VTT
-It will automaticly adjust vision on the actor token based on the status effects present on the actor. Alongside this is automatic shadow generation based on token elevation distance. 
-These effects work well alongside About-Time and Dynamic Effects for auto-application. 
-
-https://foundryvtt.com/packages/combat-utility-belt/
-
-
-Module config settings can toggle use the use of the "Blinded" setting, which will restrict the tokens vision to 1 degree (closest to fully blinded possible in the Foundry System)
-Shadow settings will toggle the use of the elevation based shadow effects. 
-
+# Blindness
+Condition Automation will automatically adjust token vision settings to more closely represent Blindness. Configurable settings from removing vision entirely, reducing sight angle to 1 degree or using the Perfect Vivsion module to restrict vision to 0 feet.
 
 
 ## Shadows
@@ -16,6 +8,7 @@ This also includes automatic shadow creation for token elevation. This section r
 ![Shadow Effects](https://github.com/kandashi/condition-automation/blob/master/Images/ShadowEffects.PNG)
  
 https://foundryvtt.com/packages/tokenmagic/
+
 
 Many thanks to Forien for guiding me through this module, his patreon is here: https://www.patreon.com/forien
 
@@ -50,3 +43,7 @@ Reworked the blinded setting to properly recognise all Effects not only CUB ones
 **V2.2.0**
 - Added support for PF2e 
 - Cleaned up old code to enhance performance
+
+**V2.2.4** 
+- Added support for Tormenta (thanks to @mclemente)
+- Added spanish translation (thanks to @mclemente)
