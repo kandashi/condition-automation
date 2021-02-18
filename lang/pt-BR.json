@@ -1,0 +1,16 @@
+{
+  "CONDITION-AUTOMATION.BlindingSettingTitle": "Configuração de Cegueira",
+  "CONDITION-AUTOMATION.BlindingSettingHint": "Alterna o efeito de \"cegueira\" na visão do token.",
+  "CONDITION-AUTOMATION.BlindingSettingOption0": "Desabilitada",
+  "CONDITION-AUTOMATION.BlindingSettingOption1": "Ângulo de Visão de 1 grau",
+  "CONDITION-AUTOMATION.BlindingSettingOption2": "Remove a Visão",
+  "CONDITION-AUTOMATION.BlindingSettingOption3": "Limite de Visão do módulo Perfect Vision",
+  "CONDITION-AUTOMATION.condition-automationError": "Limite de Visão do Perfect Vision não pode funcionar sem o módulo Perfect Vision ativado.",
+  "CONDITION-AUTOMATION.BlindStatusTitle": "Nome do Status de Cegueira",
+  "CONDITION-AUTOMATION.BlindStatusHint": "Nome do efeito que será procurado. Padrão: Blind. Para CUB: Blinded.",
+  "CONDITION-AUTOMATION.npcVisionTitle": "Habilitar configuração de visão para tokens não-vinculados",
+  "CONDITION-AUTOMATION.npcVisionHint": "Permite que NPCs sejam afetados pela Configuração de Cegueira.",
+  "CONDITION-AUTOMATION.shadowsTitle": "Configuração de Sombra",
+  "CONDITION-AUTOMATION.shadowsHint": "Habilita os efeitos de animação de sombra em elevação.",
+  "CONDITION-AUTOMATION.shadowsError": "Efeitos de animação de sombra do Condition Automation não podem funcionar sem o módulo Token Magic FX ativado."
+}

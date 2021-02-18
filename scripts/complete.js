@@ -1,70 +1,72 @@
-const conditionAutomationConfig = [{
-    name: 'Blinded',
-    data: {
-        name: 'Blinding Setting',
+Hooks.once('init', () => {
+    let BlindCondition;
+    switch (game.system.id) {
+      case "dnd5e":
+      case "pf2e":
+        BlindCondition = "Blind";
+        break;
+      case "tormenta20":
+        BlindCondition = "Cego";
+        break;
+    }
+    game.settings.register('condition-automation', 'Blinded', 
+    {
+        name: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingTitle"),
         scope: 'world',
         type: Number,
         default: 0,
         config: true,
-        hint: "Toggles the 'blinded' effect on token vision, setting their vision ark to 1 degree when blinded.",
+        hint: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingHint"),
         choices: {
-            0: "Disabled",
-            1: "1 Degree sight angle",
-            2: "Removes Vision",
-            3: "Perfect Vision limit sight"
+            0: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingOption0"),
+            1: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingOption1"),
+            2: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingOption2"),
+            3: game.i18n.localize("CONDITION-AUTOMATION.BlindingSettingOption3")
+        },
+        onChange: () => {
+            if (game.settings.get('condition-automation', 'Blinded') === 3 && !game.modules.get("perfect-vision")?.active && game.settings.get('condition-automation', 'shadows')) {
+                ui.notifications.error(game.i18n.localize("CONDITION-AUTOMATION.condition-automationError"))
+            }
         }
-    },
-},
-{
-    name: 'BlindStatus',
-    data: {
-        name: "Blind Status Name",
-        hint: "Name of the effect to search for, default Blinded. For CUB change to Blinded",
+    });
+    game.settings.register('condition-automation', 'BlindStatus', 
+    {
+        name: game.i18n.localize("CONDITION-AUTOMATION.BlindStatusTitle"),
+        hint: game.i18n.localize("CONDITION-AUTOMATION.BlindStatusHint"),
         scope: "world",
         config: true,
-        default: "Blind",
+        default: BlindCondition,
         type: String,
-    }
-},
-{
-    name: 'npcVision',
-    data: {
-        name: 'Enable unlinked token vision settings',
+    });
+    game.settings.register('condition-automation', 'npcVision', 
+    {
+        name: game.i18n.localize("CONDITION-AUTOMATION.npcVisionTitle"),
         scope: 'world',
         type: Boolean,
         default: false,
         config: true,
-        hint: "Allows NPCs to be affected by the blinded setting",
-    }
-},
-{
-    name: 'shadows',
-    data: {
-        name: 'Shadow Setting',
+        hint: game.i18n.localize("CONDITION-AUTOMATION.npcVisionHint"),
+    });
+    game.settings.register('condition-automation', 'shadows', 
+    {
+        name: game.i18n.localize("CONDITION-AUTOMATION.shadowsTitle"),
         scope: 'world',
         type: Boolean,
         default: false,
         config: true,
-        hint: "Toggles the elevation-shadow animation effects.",
+        hint: game.i18n.localize("CONDITION-AUTOMATION.shadowsHint"),
         onChange: () => {
             if (!game.modules.get("tokenmagic")?.active && game.settings.get('condition-automation', 'shadows')) {
-                ui.notifications.error("Condition Automation shadow effects cannot work without Token Magic FX enabled")
+                ui.notifications.error(game.i18n.localize("CONDITION-AUTOMATION.shadowsError"))
             }
         },
-    }
-}];
-
-
-Hooks.once('init', () => {
-    conditionAutomationConfig.forEach((cfg) => {
-        game.settings.register('condition-automation', cfg.name, cfg.data);
     });
 });
 
 console.log("ConditionsV2.1.0 active");
 
 Hooks.on("ready", () => {
-    if (game.system.id === "dnd5e") {
+    if (game.system.id === "dnd5e" || game.system.id === "tormenta20") {
         Hooks.on("preCreateActiveEffect", async (actor, effects, options, someID) => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
             const blindStatus = game.settings.get('condition-automation', 'BlindStatus');
@@ -181,7 +183,7 @@ Hooks.on("ready", () => {
         })
     }
 
-    if (game.system.id === "pf2e") {
+    else if (game.system.id === "pf2e") {
         const itemName = game.settings.get('condition-automation', 'BlindStatus')
         Hooks.on("preUpdateToken", (scene, token, update) => {
             if(game.settings.get('condition-automation', 'npcVision') === false) return;
