@@ -3,13 +3,14 @@
 	"title": "Condition Automation",
 	"description": "A simple module to automaticly update token data based on status condtions",
 	"author": "Kandashi",
-	"version": "2.2.4",
+	"version": "2.2.5",
 	"minimumCoreVersion": "0.7.5",
 	"compatibleCoreVersion": "0.7.9",
 	"system": [
 		"dnd5e",
 		"pf2e",
-		"tormenta20"
+		"tormenta20",
+		"pf1"
 	],
 	"scripts": [
 		"scripts/complete.js"

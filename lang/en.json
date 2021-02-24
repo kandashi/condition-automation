@@ -12,5 +12,8 @@
   "CONDITION-AUTOMATION.npcVisionHint": "Allows NPCs to be affected by the Blinding Setting.",
   "CONDITION-AUTOMATION.shadowsTitle": "Shadow Setting",
   "CONDITION-AUTOMATION.shadowsHint": "Enables the elevation-shadow animation effects.",
-  "CONDITION-AUTOMATION.shadowsError": "Condition Automation shadow effects cannot work without Token Magic FX enabled."
+  "CONDITION-AUTOMATION.shadowsError": "Condition Automation shadow effects cannot work without Token Magic FX enabled.",
+  "CONDITION-AUTOMATION.shadowsSetting1": "Off",
+  "CONDITION-AUTOMATION.shadowsSetting2": "Shadow Only",
+  "CONDITION-AUTOMATION.shadowsSetting3": "All"
 }
