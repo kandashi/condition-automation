@@ -12,5 +12,8 @@
   "CONDITION-AUTOMATION.npcVisionHint": "Permite que NPCs sejam afetados pela Configuração de Cegueira.",
   "CONDITION-AUTOMATION.shadowsTitle": "Configuração de Sombra",
   "CONDITION-AUTOMATION.shadowsHint": "Habilita os efeitos de animação de sombra em elevação.",
-  "CONDITION-AUTOMATION.shadowsError": "Efeitos de animação de sombra do Condition Automation não podem funcionar sem o módulo Token Magic FX ativado."
+  "CONDITION-AUTOMATION.shadowsError": "Efeitos de animação de sombra do Condition Automation não podem funcionar sem o módulo Token Magic FX ativado.",
+  "CONDITION-AUTOMATION.shadowsSetting1": "[EN] Off",
+  "CONDITION-AUTOMATION.shadowsSetting2": "[EN] Shadow Only",
+  "CONDITION-AUTOMATION.shadowsSetting3": "[EN] All"
 }

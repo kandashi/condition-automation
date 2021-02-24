@@ -47,3 +47,7 @@ Reworked the blinded setting to properly recognise all Effects not only CUB ones
 **V2.2.4** 
 - Added support for Tormenta (thanks to @mclemente)
 - Added spanish translation (thanks to @mclemente)
+
+**V2.2.5**
+- Added PF1 support
+- Reworked shadow effects to filter out the "bulge" effect as an option
