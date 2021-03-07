@@ -71,9 +71,10 @@ Hooks.once('init', () => {
         });
 });
 
-console.log("ConditionsV2.1.0 active");
+console.log("ConditionsV2.2.6 active");
 
 Hooks.on("ready", () => {
+    if(!game.user === game.users.find((u) => u.isGM && u.active)) return;
     if (game.system.id === "dnd5e" || game.system.id === "tormenta20") {
         Hooks.on("preCreateActiveEffect", async (actor, effects, options, someID) => {
             const blindedSetting = game.settings.get('condition-automation', 'Blinded');
