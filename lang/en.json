@@ -15,5 +15,16 @@
   "CONDITION-AUTOMATION.shadowsError": "Condition Automation shadow effects cannot work without Token Magic FX enabled.",
   "CONDITION-AUTOMATION.shadowsSetting1": "Off",
   "CONDITION-AUTOMATION.shadowsSetting2": "Shadow Only",
-  "CONDITION-AUTOMATION.shadowsSetting3": "All"
+  "CONDITION-AUTOMATION.shadowsSetting3": "All",
+
+  "CONDITION-AUTOMATION.deadMacroName" : "Death Macro",
+  "CONDITION-AUTOMATION.deadMacroHint" : "Name of the macro to execute when an unlinked token hits 0HP",
+  "CONDITION-AUTOMATION.poisonedMacroHint" : "Name of the macro to execute when an token is poisoned",
+  "CONDITION-AUTOMATION.poisonedMacroName" : "Poisoned Macro",
+  "CONDITION-AUTOMATION.stunnedMacroHint" : "Name of the macro to execute when an token is stunned",
+  "CONDITION-AUTOMATION.stunnedMacroName" : "Stunned Macro",
+  "CONDITION-AUTOMATION.paralyzedMacroHint" : "Name of the macro to execute when an token is paralyzed",
+  "CONDITION-AUTOMATION.paralyzedMacroName" : "Paralyzed Macro",
+  "CONDITION-AUTOMATION.petrifiedMacroHint" : "Name of the macro to execute when an token is petrified",
+  "CONDITION-AUTOMATION.petrifiedMacroName" : "Petrified Macro"
 }
