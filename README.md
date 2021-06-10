@@ -12,7 +12,7 @@ Paralyzed, Poisoned, Petrified and Stunned will all trigger a macro as named in 
 A macro can be triggered as a **unlinked** token reaches 0 hp. This is a one way macro and will not re-run if the token is healed.
 
 # Shadows
-This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automaticly set a shadow effect "below" the token, this is change in distance based on the elevation value. 
+This also includes automatic shadow creation for token elevation. This section requires Token Magic Fx to function. Changing the elevation of a token over 5ft will automatically set a shadow effect "below" the token, this is change in distance based on the elevation value. 
 
 ![Shadow Effects](https://github.com/kandashi/condition-automation/blob/master/Images/ShadowEffects.PNG)
  

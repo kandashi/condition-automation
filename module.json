@@ -13,7 +13,11 @@
 		"pf1"
 	],
 	"scripts": [
-		"scripts/complete.js"
+		"scripts/complete.js",
+		"scripts/CApf1.js",
+		"scripts/CApf2.js",
+		"scripts/CAdnd5.js",
+		"scripts/CAmacro.js"
 	],
   "languages": [
     {
