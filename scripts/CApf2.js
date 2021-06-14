@@ -107,28 +107,28 @@ function CAHandlepf2() {
         let document = item.parent
         if (item.type === 'condition' && item.data.flags[game.system.id]?.condition && item.name === `${itemName}`) {
             let token;
-            if(document.data.token.actoRLink){
+            if(document.data.token.actorLink){
             token = document.getActiveTokens()[0]
             }
             else {
                 token = canvas.tokens.get(document.id)
             }
-            const blinded = actor.getFlag('condition-automation', 'sight')
+            const blinded = document.getFlag('condition-automation', 'sight')
             if (!blinded) {
-                ConAutoPF2.blindApplyActor(actor, token)
+                ConAutoPF2.blindApplyActor(document, token)
             }
         }
         if (item.type === 'condition' && item.data.flags[game.system.id]?.condition && item.name === game.i18n.format("PF2E.ConditionTypeSickened")) {
-            ConAuto.poisoned(actor.getActiveTokens()[0])
+            ConAuto.poisoned(document.getActiveTokens()[0])
         }
         if (item.type === 'condition' && item.data.flags[game.system.id]?.condition && item.name === game.i18n.format("PF2E.ConditionTypeStunned")) {
-            ConAuto.stunned(actor.getActiveTokens()[0])
+            ConAuto.stunned(document.getActiveTokens()[0])
         }
         if (item.type === 'condition' && item.data.flags[game.system.id]?.condition && item.name === game.i18n.format("PF2E.ConditionTypePetrified")) {
-            ConAuto.petrified(actor.getActiveTokens()[0])
+            ConAuto.petrified(document.getActiveTokens()[0])
         }
         if (item.type === 'condition' && item.data.flags[game.system.id]?.condition && item.name === game.i18n.format("PF2E.ConditionTypeParalyzed")) {
-            ConAuto.paralyzed(actor.getActiveTokens()[0])
+            ConAuto.paralyzed(document.getActiveTokens()[0])
         }
     });
 
